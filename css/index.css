@@ -1,0 +1,77 @@
+body {
+    position: relative;
+    height: 700px;
+    /* 
+    background-image: url('https://source.unsplash.com/1600x900/?nature,water');
+    */
+    background-color: #3a50a5;
+}
+
+main {
+    height: 100%;    
+}
+
+.login-option {
+    position: relative;
+    height: 2.5em;
+}
+
+.login-option-item {
+    float: right;
+    margin: 0 0.5em;
+    line-height: 2.4rem;
+}
+
+h4.login-option-item {
+    font-weight: normal!important;
+}
+button.login-option-item {
+    width: 120px;
+    height: 2.8em;
+    color: white;
+    background-color: #0a2075;
+    border: 2px solid #2a4095;
+    border-radius: 20px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.content {
+    width: 350px;
+    height: 250px;
+    margin: 120px auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 2.25rem;
+    font-weight: normal!important;
+}
+
+.content h3 {
+    margin: 0.5em auto 1em;
+    font-style: italic;
+    font-weight: normal!important;
+}
+
+.content a {
+    margin: auto;
+}
+
+.content button {
+    width: 200px;
+    height: 3em;
+    color: white;
+    background-color: #0a2075;
+    border: 2px solid #2a4095;
+    border-radius: 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+h1, h2, h3, h4, p, button {
+	font-family: 'Raleway', sans-serif;
+    color: white;
+}
