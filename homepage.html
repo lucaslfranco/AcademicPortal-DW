@@ -4,64 +4,92 @@
 		<title>Home</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--CSS-->
 		<link rel="stylesheet" href="css/styles.css">
+		<!--Fontes-->
 		<link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
+		<!--Icones-->
 		<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 	</head>
 	<body>
-		
 		<header class="dark-purple-background dark-boxshadow">
 			<h2 id="logo">
-				<i class="fas fa-graduation-cap fa-2x"></i>
+				APortal
 			</h2>
-			<h1>Portal do Aluno</h1>
+			<h1 id="topnav-title">Portal do Aluno</h1>
 			<div id="config-options">
-				<a href="./">
-					<i class="fas fa-user-circle fa-2x"></i>
-				</a>
+				<div class="options-tooltip">
+					<a href="#/profile">Perfil</a>
+					<a href="./#">Logout</a>
+				</div>
+				<i class="fas fa-user-circle fa-2x"></i>
 			</div>
 		</header>
 		
 		<main class="white-background">
-			<div id="sidenav" class="dark-gray-background dark-boxshadow">
-				<button class="sidenav-section"><h3>Home</h3></button>	
-				<button class="sidenav-section"><h3>Disciplinas</h3></button>
-				<div class="sidenav-options">
-						<a href="#">BD I</a>
-						<a href="#">BD II</a>
-						<a href="#">DW</a>
-						<a href="#">SSI</a>
+			<nav id="compact-sidenav" class="dark-gray-background dark-boxshadow">
+				<a href="#sidenav">
+					<i class="fas fa-bars fa-lg"></i>
+				</a>
+			</nav>
+			<nav id="sidenav" class="dark-gray-background dark-boxshadow">
+				<a href="#">
+					<h3 class="sidenav-section">Home</h3>
+				</a>	
+				<a href="#courses">
+					<h3 class="sidenav-section">Disciplinas</h3>
+				</a>
+				<div id="courses" class="sidenav-options">
+					<a href="#">BD I</a>
+					<a href="#">BD II</a>
+					<a href="#">DW</a>
+					<a href="#">SSI</a>
 				</div>
-				<button class="sidenav-section"><h3>Suporte</h3></button>
-				<div class="sidenav-options">
-						<a href="#">Contato</a>
-						<a href="#">Suporte Online</a>
+				<a href="#support">
+					<h3 class="sidenav-section">Suporte</h3>
+				</button>
+				<div id="support" class="sidenav-options">
+					<a href="#">Contato</a>
+					<a href="#">Suporte Online</a>
 				</div>				
-			</div>
+			</nav>
 
 			<div class="main-section">
 				<h2>Informações do Aluno</h2>
 				<div class="content">
-					<p>Nome do Aluno</p>
-					<p>E-mail</p>
-					<input value="Lucas Ricardo de Lima Franco">
-					<input value="lucasfranco@email.com">
-					<p>Curso</p>
-					<p>Nível</p>
-					<input value="Engenharia Informática">
-					<input value="Licenciatura">
+					<div class="input-section">
+						<p>Nome do Aluno</p>
+						<input value="Lucas Ricardo de Lima Franco">
+					</div>
+					<div class="input-section">
+						<p>E-mail</p>
+						<input value="lucasfranco@email.com">
+					</div>
 					
-					<p>Coordenador do Curso</p>
-					<p>E-mail do Coordenador</p>
-					<input value="João Alberto Oliveira">
-					<input value="joaooliveira@email.com">
+					<div class="input-section">
+						<p>Curso</p>
+						<input value="Engenharia Informática">
+					</div>
+					<div class="input-section">
+						<p>Nível</p>
+						<input value="Licenciatura">
+					</div>
+
+					<div class="input-section">
+						<p>Coordenador do Curso</p>
+						<input value="João Alberto Oliveira">
+					</div>
+					<div class="input-section">	
+						<p>E-mail do Coordenador</p>
+						<input value="joaooliveira@email.com">
+					</div>
 				</div>
 			</div>
 
 			<div id="news-section" class="dark-boxshadow">
 				<div class="new-item">
 					<h4>Parceria Estabelecida entre IPB e UTFPR</h4>	
-					<p>Novo acordo entre a Universidade Tecnológica Federal do Paraná (Brasil) e o Instituto Politécnico de Brangança (Portugal) foi definido na última terça-feira (27/03), possibilitando a mobilidade de professores e pesquisadores entre .</p>
+					<p>Novo acordo entre a Universidade Tecnológica Federal do Paraná (Brasil) e o Instituto Politécnico de Brangança (Portugal) foi definido na última terça-feira (27/03), possibilitando a mobilidade de professores e pesquisadores entre as instituições.</p>
 				</div>
 				<div class="new-item">
 					<h4>Programa de Investigação 2018-1</h4>	
@@ -70,9 +98,23 @@
 			</div>
 		</main>
 		<footer class="dark-purple-background dark-boxshadow">
-			<h3>Footer</h3>
+			<div id="footer-info">
+				<div class="footer-section">
+					<h3>Links de Acesso Rápido</h3>
+					<ul>
+						<a href="#/courses"><h4>Disciplinas</h4></a>
+						<a href="#/profile"><h4>Perfil</h4></a>
+					</ul>
+				</div>
+				<div class="footer-section">
+					<h3>Suporte</h3>
+					<ul>
+							<a href="#/contact"><h4>Contato</h4></a>
+							<a href="#/support"><h4>Suporte Online</h4></a>
+					</ul>
+				</div>
+			</div>
+			<h3 id=copyright-info>&#169 2018 - Academic Portal</h3>
 		</footer>
-	
-		<script src="js/index.js"></script>
 	</body>
 </html>
