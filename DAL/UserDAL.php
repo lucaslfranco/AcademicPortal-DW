@@ -1,5 +1,4 @@
 <?php
-
 require_once './DAL/DB.php';
 
 class UserDAL {
@@ -36,7 +35,7 @@ class UserDAL {
         return $users;
     }   
 
-    static function getByAll($id){
+    static function getById($id){
         // Initializes database connection
         $conn = DB::createConnection();
  
@@ -45,18 +44,35 @@ class UserDAL {
         $stmt = $conn->prepare($sql);
         $stmt->execute(array(':id' => $id));
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
-        while($user = $stmt->fetch()){
-            print_r($user);
-        }
+        $user = $stmt->fetch();
         $stmt->closeCursor();
         return $user;        
     }
     
-    static function delete($id){
+    static function update($user){
+        // Initializes the database connection
+        $conn = DB::createConnection();
+
+        // Updates a user from the database
+        $sql = "UPDATE user SET id = :id, username = :username, password = :password, "
+                . "name = :name, email = :email, role = :role WHERE id = :id";
+        
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(array(
+            ':id' => $user->getId(),
+            ':username' => $user->getUsername(),
+            ':password' => $user->getPassword(),
+            ':name' => $user->getName(),
+            ':email' => $user->getEmail(),
+            ':role' => $user->getRole()
+        ));
+    }
+    
+    static function remove($id){
         // Initializes database connection
         $conn = DB::createConnection();
  
-        // Fetches a user by id
+        // Deletes a user by id
         $sql = "DELETE FROM user WHERE id=:id";
         $stmt = $conn->prepare($sql);
         $stmt->execute(array(':id' => $id));

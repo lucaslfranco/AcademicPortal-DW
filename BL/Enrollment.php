@@ -1,20 +1,44 @@
 <?php
-/**
- * Description of Enrollment
- *
- * @author lucasfranco
- */
+require_once './DAL/EnrollmentDAL.php';
+
 class Enrollment {
     private $id_course;
     private $id_student;
     private $id_grades;
     private $absences;
     
-    function __construct($id_course, $id_student, $id_grades, $absences) {
-        $this->id_course = $id_course;
-        $this->id_student = $id_student;
-        $this->id_grades = $id_grades;
-        $this->absences = $absences;
+    function __construct(){}
+    
+    static function constructWithParams($id_course, $id_student, $id_grades, $absences) {
+        $enrollment = new self();
+        $enrollment->id_course = $id_course;
+        $enrollment->id_student = $id_student;
+        $enrollment->id_grades = $id_grades;
+        $enrollment->absences = $absences;
+    
+        return $enrollment;
+    }
+    
+    function create(){
+        EnrollmentDAL::create($this);
+    }
+    function getAll(){
+        return EnrollmentDAL::getAll();
+    }
+    function getByCourse(){
+        return EnrollmentDAL::getByCourse($this->id_course);
+    }
+    function getByStudent(){
+        return EnrollmentDAL::getByStudent($this->id_student);
+    }
+    function getByIds(){
+        return EnrollmentDAL::getByIds($this);
+    }
+    function update(){
+        EnrollmentDAL::update($this);
+    }
+    function remove(){
+        EnrollmentDAL::remove($this);
     }
 
     function getId_course() {

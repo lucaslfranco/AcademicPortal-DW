@@ -1,10 +1,6 @@
 <?php
+require_once './DAL/GradesDAL.php';
 
-/**
- * Description of Grades
- *
- * @author lucasfranco
- */
 class Grades {
     private $id;
     private $grade01;
@@ -12,14 +8,34 @@ class Grades {
     private $grade03;
     private $grade04;
     
-    function __construct($id, $grade01, $grade02, $grade03, $grade04) {
-        $this->id = $id;
-        $this->grade01 = $grade01;
-        $this->grade02 = $grade02;
-        $this->grade03 = $grade03;
-        $this->grade04 = $grade04;
+    function __construct(){}
+    
+    function constructWithParams($grade01, $grade02, $grade03, $grade04) {
+        $grades = new self();
+        $grades->grade01 = $grade01;
+        $grades->grade02 = $grade02;
+        $grades->grade03 = $grade03;
+        $grades->grade04 = $grade04;
+
+        return $grades;
     }
 
+    function create(){
+        GradesDAL::create($this);
+    }
+    function getAll(){
+        return GradesDAL::getAll();
+    }
+    function getById(){
+        return GradesDAL::getById($this->id);
+    }
+    function update(){
+        GradesDAL::update($this);
+    }
+    function remove(){
+        GradesDAL::remove($this->id);
+    }
+    
     function getId() {
         return $this->id;
     }
@@ -50,6 +66,5 @@ class Grades {
     }
     function setGrade04($grade04) {
         $this->grade04 = $grade04;
-    }
-    
+    }  
 }

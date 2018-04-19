@@ -1,9 +1,6 @@
 <?php
-/**
- * Description of Course
- *
- * @author lucasfranco
- */
+require_once './DAL/CourseDAL.php';
+
 class Course {
     private $id;
     private $name;
@@ -11,12 +8,32 @@ class Course {
     private $id_programme;
     private $id_teacher;
     
-    function __construct($id, $name, $credits, $id_programme, $id_teacher) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->credits = $credits;
-        $this->id_programme = $id_programme;
-        $this->id_teacher = $id_teacher;
+    function __construct() {}
+    
+    static function constructWithParams($name, $credits, $id_programme, $id_teacher) {
+        $course = new Self();
+        $course->name = $name;
+        $course->credits = $credits;
+        $course->id_programme = $id_programme;
+        $course->id_teacher = $id_teacher;
+    
+        return $course;
+    }
+    
+    function create(){
+        return CourseDAL::create($this);
+    }
+    function getAll(){
+        return CourseDAL::getAll();
+    }
+    function getById(){
+        return CourseDAL::getById($this->id);
+    }
+    function update(){
+        return CourseDAL::update($this);
+    }
+    function remove(){
+        return CourseDAL::remove($this->id);
     }
     
     function getId() {

@@ -1,23 +1,43 @@
 <?php
+require_once './DAL/ProgrammeDAL.php';
 
-/**
- * Description of Programme
- *
- * @author lucasfranco
- */
 class Programme {
-    private $id;
-    private $name;
-    private $degree;
-    private $id_director;
+    public $id;
+    public $name;
+    public $degree;
+    public $id_director;
     
-    function __construct($id, $name, $degree, $id_director) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->degree = $degree;
-        $this->id_director = $id_director;
+    function __construct(){}
+    
+    static function constructWithParams($name, $degree, $id_director) {
+        $programme = new Self();
+        $programme->name = $name;
+        $programme->degree = $degree;
+        $programme->id_director = $id_director;
+        
+        return $programme;
     }
 
+    function create(){
+        return ProgrammeDAL::create($this);
+    }
+    
+    function getAll(){
+        return ProgrammeDAL::getAll();
+    }
+    
+    function getById(){
+        return ProgrammeDAL::getById($this->id);
+    }
+    
+    function update(){
+        return ProgrammeDAL::update($this);
+    }
+    
+    function remove(){
+        return ProgrammeDAL::remove($this->id);
+    }    
+    
     function getId() {
         return $this->id;
     }

@@ -19,27 +19,24 @@ class User {
         $user->name = $name;
         $user->email = $email;
         $user->role = $role;
+        
         return $user;
     }
 
-    function register(){
+    function create(){
       UserDAL::create($this);
     }
-    
     function getAll(){
         return UserDAL::getAll();
     }
-    
     function getById(){
-        return UserDAL::getByAll($this->id);
+        return UserDAL::getById($this->id);
     }
-    
+    function update(){
+        return UserDAL::update($this);
+    }  
     function remove(){
-        return UserDAL::Delete($this->id);
-    }
-    
-    function concatenate() {
-        return "$this->username - $this->password - $this->name - $this->email - {$this->role}";
+        return UserDAL::remove($this->id);
     }
 
     function getId() {
@@ -79,5 +76,4 @@ class User {
     function setRole($role) {
       $this->role = $role;
     }
-
 }
