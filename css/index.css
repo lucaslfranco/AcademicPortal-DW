@@ -11,6 +11,21 @@ main {
     height: 100%;    
 }
 
+.logo{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+}
+
+.logo h1 {
+    margin: 0 auto 0.5em;
+    font-size: 3em;
+    font-weight: normal;
+}
+
 .login-option {
     position: relative;
     height: 2.5em;
@@ -38,16 +53,10 @@ button.login-option-item {
 
 .content {
     width: 350px;
-    height: 250px;
     margin: 120px auto;
     display: flex;
     flex-direction: column;
     text-align: center;
-}
-
-.content h1 {
-    font-size: 2.25rem;
-    font-weight: normal!important;
 }
 
 .content h3 {

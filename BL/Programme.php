@@ -1,5 +1,5 @@
 <?php
-require_once './DAL/ProgrammeDAL.php';
+require_once '../DAL/ProgrammeDAL.php';
 
 class Programme {
     public $id;
@@ -9,6 +9,13 @@ class Programme {
     
     function __construct(){}
     
+    static function constructWithId($id) {
+        $programme = new Self();
+        $programme->setId($id);
+        
+        return $programme;
+    }
+
     static function constructWithParams($name, $degree, $id_director) {
         $programme = new Self();
         $programme->name = $name;

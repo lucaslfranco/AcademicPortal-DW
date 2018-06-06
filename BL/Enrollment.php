@@ -1,5 +1,5 @@
 <?php
-require_once './DAL/EnrollmentDAL.php';
+require_once '../DAL/EnrollmentDAL.php';
 
 class Enrollment {
     private $id_course;
@@ -8,6 +8,14 @@ class Enrollment {
     private $absences;
     
     function __construct(){}
+    
+    static function constructWithIds($id_course, $id_student) {
+        $enrollment = new self();
+        $enrollment->id_course = $id_course;
+        $enrollment->id_student = $id_student;
+    
+        return $enrollment;
+    }
     
     static function constructWithParams($id_course, $id_student, $id_grades, $absences) {
         $enrollment = new self();

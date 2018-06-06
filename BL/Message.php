@@ -1,5 +1,5 @@
 <?php
-require_once './DAL/MessageDAL.php';
+require_once '../DAL/MessageDAL.php';
 
 class Message {
     private $id;
@@ -26,6 +26,12 @@ class Message {
     }
     function getById(){
         return MessageDAL::getById($this->id);
+    }
+    function getByStudent($student_id){
+        return MessageDAL::getByStudent($student_id);
+    }
+    function getByTeacher($teacher_id){
+        return MessageDAL::getByTeacher($teacher_id);
     }
     function update(){
         return MessageDAL::update($this);

@@ -1,5 +1,5 @@
 <?php
-require_once './DAL/DB.php';
+require_once '../DAL/DB.php';
 
 class GradesDAL {
     

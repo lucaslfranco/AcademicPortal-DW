@@ -1,0 +1,59 @@
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 3;
+    opacity:0;
+    -webkit-transition: opacity 200ms ease-in;
+    -moz-transition: opacity 200ms ease-in;
+    transition: opacity 200ms ease-in;
+    pointer-events: none;
+}
+
+.modal:target {
+    opacity:1;
+    pointer-events: auto;
+}
+
+.modal .modal-content {
+    width: 600px;
+    position: relative;
+    margin: 5.5em auto;
+    padding: 3em 3em 0;
+    border-radius: 5px;
+    background-color: #eee;
+}
+
+.modal .edit-modal {
+    margin: 3em auto;
+}
+
+.modal-form {
+    padding-top:    0;
+    background-color: #eee;
+}
+
+.modal-form input, .modal-form textarea {
+    margin: 1em 1em;
+    border: 1px solid #335;
+}
+
+.closeModal {
+    position: absolute;
+    width: 2em;
+    right: -1em;
+    top: -1em;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    line-height: 2em;
+    text-decoration: none;
+    border-radius: 2em;
+    box-shadow: 0.1em 0.1em 0.1em #111;
+}
+
+.closeModal:hover { background: #777; }

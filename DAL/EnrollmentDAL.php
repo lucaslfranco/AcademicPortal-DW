@@ -1,5 +1,5 @@
 <?php
-require_once './DAL/DB.php';
+require_once '../DAL/DB.php';
 
 class EnrollmentDAL {
 
@@ -8,12 +8,12 @@ class EnrollmentDAL {
         $conn = DB::createConnection();
 
         // Inserts a enrollment into the database
-        $sql = "INSERT INTO enrollment (idCourse, idStudent, idGrades, absences) VALUES (:idCourse, :idStudent, :idGrades, :absences)";
+        $sql = "INSERT INTO enrollment (id_course, id_student, id_grades, absences) VALUES (:id_course, :id_student, :id_grades, :absences)";
         $stmt = $conn->prepare($sql);
         $stmt->execute(array(
-            ':idCourse' => $enrollment->getId_course(),
-            ':idStudent' => $enrollment->getId_student(),
-            ':idGrades' => $enrollment->getId_grades(),
+            ':id_course' => $enrollment->getId_course(),
+            ':id_student' => $enrollment->getId_student(),
+            ':id_grades' => $enrollment->getId_grades(),
             ':absences' => $enrollment->getAbsences(),
         ));
     }
@@ -32,15 +32,15 @@ class EnrollmentDAL {
         return $enrollments;
     }   
 
-    static function getByStudent($idStudent){
+    static function getByStudent($id_student){
         // Initializes database connection
         $conn = DB::createConnection();
  
         // Fetches all enrollments by student id
-        $sql = "SELECT * FROM enrollment WHERE  idStudent = :idStudent";
+        $sql = "SELECT * FROM enrollment WHERE  id_student = :id_student";
         $stmt = $conn->prepare($sql);
         $stmt->execute(array(
-            ':idStudent' => $idStudent
+            ':id_student' => $id_student
         ));
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Enrollment');
         $enrollments = $stmt->fetchAll();
@@ -48,15 +48,15 @@ class EnrollmentDAL {
         return $enrollments;
     }
     
-    static function getByCourse($idCourse){
+    static function getByCourse($id_course){
         // Initializes database connection
         $conn = DB::createConnection();
  
         // Fetches all enrollments by course id
-        $sql = "SELECT * FROM enrollment WHERE  idCourse = :idCourse";
+        $sql = "SELECT * FROM enrollment WHERE  id_course = :id_course";
         $stmt = $conn->prepare($sql);
         $stmt->execute(array(
-            ':idCourse' => $idCourse
+            ':id_course' => $id_course
         ));
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Enrollment');
         $enrollments = $stmt->fetchAll();
@@ -68,12 +68,12 @@ class EnrollmentDAL {
         // Initializes database connection
         $conn = DB::createConnection();
  
-        // Fetches a enrollment by idCourse and idStudent
-        $sql = "SELECT * FROM enrollment WHERE idCourse = :idCourse AND idStudent = :idStudent";
+        // Fetches a enrollment by id_course and id_student
+        $sql = "SELECT * FROM enrollment WHERE id_course = :id_course AND id_student = :id_student";
         $stmt = $conn->prepare($sql);
         $stmt->execute(array(
-            ':idCourse' => $enrollment->getId_course(),
-            ':idStudent' => $enrollment->getId_student()
+            ':id_course' => $enrollment->getId_course(),
+            ':id_student' => $enrollment->getId_student()
         ));
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Enrollment');
         $enrollment = $stmt->fetch();
@@ -86,14 +86,14 @@ class EnrollmentDAL {
         $conn = DB::createConnection();
 
         // Updates a enrollment from the database
-        $sql = "UPDATE enrollment SET idCourse = :idCourse, idStudent = :idStudent, "
-                . "idGrades = :idGrades, absences = :absences WHERE idCourse = :idCourse AND idStudent = :idStudent";
+        $sql = "UPDATE enrollment SET id_course = :id_course, id_student = :id_student, "
+                . "id_grades = :id_grades, absences = :absences WHERE id_course = :id_course AND id_student = :id_student";
         
         $stmt = $conn->prepare($sql);
         $stmt->execute(array(
-            ':idCourse' => $enrollment->getId_course(),
-            ':idStudent' => $enrollment->getId_student(),
-            ':idGrades' => $enrollment->getId_grades(),
+            ':id_course' => $enrollment->getId_course(),
+            ':id_student' => $enrollment->getId_student(),
+            ':id_grades' => $enrollment->getId_grades(),
             ':absences' => $enrollment->getAbsences()
         ));
     }
@@ -103,11 +103,11 @@ class EnrollmentDAL {
         $conn = DB::createConnection();
  
         // Deletes a user by id
-        $sql = "DELETE FROM enrollment WHERE idCourse = :idCourse AND idStudent = :idStudent";
+        $sql = "DELETE FROM enrollment WHERE id_course = :id_course AND id_student = :id_student";
         $stmt = $conn->prepare($sql);
         $stmt->execute(array(
-            ':idCourse' => $enrollment->getId_course(),
-            ':idStudent' => $enrollment->getId_student()
+            ':id_course' => $enrollment->getId_course(),
+            ':id_student' => $enrollment->getId_student()
         ));
         $stmt->closeCursor();
     }

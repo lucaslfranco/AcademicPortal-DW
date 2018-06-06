@@ -1,5 +1,5 @@
 <?php
-require_once './DAL/DB.php';
+require_once '../DAL/DB.php';
 
 class ProgrammeDAL {
         static function create($programme) {
@@ -7,12 +7,12 @@ class ProgrammeDAL {
         $conn = DB::createConnection();
 
         // Inserts a programme into the database
-        $sql = "INSERT INTO programme (name, degree, idDirector) VALUES (:name, :degree, :idDirector)";
+        $sql = "INSERT INTO programme (name, degree, id_director) VALUES (:name, :degree, :id_director)";
         $stmt = $conn->prepare($sql);
         $stmt->execute(array(
             ':name' => $programme->getName(),
             ':degree' => $programme->getDegree(),
-            ':idDirector' => $programme->getId_director(),
+            ':id_director' => $programme->getId_director(),
         ));
         // Updates the ID with the auto generated ID of the database
         $programme->setId($conn->lastInsertId());
@@ -52,14 +52,14 @@ class ProgrammeDAL {
 
         // Updates a programme from the database
         $sql = "UPDATE programme SET id = :id, name = :name, degree = :degree, "
-                . "idDirector = :idDirector WHERE id = :id";
+                . "id_director = :id_director WHERE id = :id";
         
         $stmt = $conn->prepare($sql);
         $stmt->execute(array(
             ':id' => $programme->getId(),
             ':name' => $programme->getName(),
             ':degree' => $programme->getDegree(),
-            ':idDirector' => $programme->getId_director()
+            ':id_director' => $programme->getId_director()
         ));
     }
     

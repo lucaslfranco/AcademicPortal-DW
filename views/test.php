@@ -1,10 +1,10 @@
 <?php
-    require_once './BL/Course.php';
-    require_once './BL/Enrollment.php';
-    require_once './BL/Grades.php';
-    require_once './BL/Message.php';
-    require_once './BL/Programme.php';
-    require_once './BL/User.php';
+    require_once '../BL/Course.php';
+    require_once '../BL/Enrollment.php';
+    require_once '../BL/Grades.php';
+    require_once '../BL/Message.php';
+    require_once '../BL/Programme.php';
+    require_once '../BL/User.php';
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +15,13 @@
     </head>
     <body>
         <h1>Academic Portal</h1>
+        <?php
+            if(isset($_GET['page'])){
+                echo $_GET['page'];
+            }
+        ?>
+        
+        
         <?php
         //TESTS WITH 'USER' CLASSES
             print_r("<br>----------------TESTS WITH 'USER' CLASSES----------------<br><br>");

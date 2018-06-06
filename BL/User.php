@@ -1,5 +1,5 @@
 <?php
-    require_once './DAL/UserDAL.php';
+    require_once '../DAL/UserDAL.php';
 
 class User {
 
@@ -12,6 +12,12 @@ class User {
 
     function __construct(){}
     
+    static function constructWithId($id) {
+        $user = new self();
+        $user->setId($id);
+        
+        return $user;
+    }
     static function constructWithParams($username, $password, $name, $email, $role) {
         $user = new self();
         $user->username = $username;
@@ -24,13 +30,19 @@ class User {
     }
 
     function create(){
-      UserDAL::create($this);
+        return UserDAL::create($this);
     }
     function getAll(){
         return UserDAL::getAll();
     }
     function getById(){
         return UserDAL::getById($this->id);
+    }
+    function getByUsername(){
+        return UserDAL::getByUsername($this->username);
+    }
+    function getByCourse($course_id){
+        return UserDAL::getByCourse($course_id);
     }
     function update(){
         return UserDAL::update($this);

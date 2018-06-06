@@ -1,5 +1,5 @@
 <?php
-require_once './DAL/DB.php';
+require_once '../DAL/DB.php';
 
 class UserDAL {
 
@@ -10,7 +10,7 @@ class UserDAL {
         // Inserts a user into the database
         $sql = "INSERT INTO user (username, password, name, email, role) VALUES (:username, :password, :name, :email, :role)";
         $stmt = $conn->prepare($sql);
-        $stmt->execute(array(
+        $status = $stmt->execute(array(
             ':username' => $user->getUsername(),
             ':password' => $user->getPassword(),
             ':name' => $user->getName(),
@@ -19,6 +19,7 @@ class UserDAL {
         ));
         // Updates the user id with the auto generated ID of the database
         $user->setId($conn->lastInsertId());
+        return $status;
     }
 
     static function getAll() {
@@ -48,6 +49,34 @@ class UserDAL {
         $stmt->closeCursor();
         return $user;        
     }
+    
+    static function getByUsername($username){
+        // Initializes database connection
+        $conn = DB::createConnection();
+ 
+        // Fetches a user by id
+        $sql = "SELECT * FROM user WHERE username=:username";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(array(':username' => $username));
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+        $user = $stmt->fetch();
+        $stmt->closeCursor();
+        return $user;        
+    }
+    
+    static function getByCourse($course_id) {
+        // Initializes database connection
+        $conn = DB::createConnection();
+
+        // Fetches by course from 'user' table of the database
+        $sql = "SELECT u.* FROM user u JOIN enrollment e ON u.id = e.id_student WHERE e.id_course = :course_id";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(array(':course_id' => $course_id));
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+        $users = $stmt->fetchAll();
+        $stmt->closeCursor();
+        return $users;
+    }   
     
     static function update($user){
         // Initializes the database connection

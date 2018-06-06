@@ -1,0 +1,107 @@
+.dark-boxshadow {
+    box-shadow: 0px 0px 10px #777;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2em;
+    background-color: #fafafc;
+    border-radius: 10px;
+}
+
+.form-content {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2em 0;
+    justify-content: space-around;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-section p {
+    margin: 1em 0 0.2em;
+    padding: 0 0.5em;
+}
+
+.input-section input, .input-section select, .input-section textarea {
+    padding: 0.75em 1em;
+    border: 1.2px solid #444;
+    border-radius: 6px;
+}
+
+.input-section input {
+    margin: 0 1px;
+}
+
+.input-section select {
+    width: 100%;
+}
+ 
+.thin-section input, .input-section select, .input-section textarea {
+    margin: 0 !important;
+}
+#grades-form {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+form button {
+    width: 150px;
+    height: 2.75em;
+    margin: 1em auto 0;
+    color: white;
+    background-color: #0a2075;
+    border: 2px solid #2a4095;
+    border-radius: 20px;
+    cursor: pointer;
+    outline: none;
+}
+
+.submit-button:disabled {
+    color: black;
+    background-color: #ddd;
+    border: 2px solid #bbb;
+    border-radius: 20px;    
+    cursor: auto;
+}
+
+.no-form {
+    padding: 0;
+    margin: 0;
+    background-color: transparent; 
+}
+#user-name {
+    color: #111;
+}
+
+/* Most used widths */
+.grid-12{
+    width: 100%;
+}
+.grid-10{
+    width: 83%;
+}
+.grid-8{
+    width: 66%;
+}
+.grid-6{
+    width: 50%;
+}
+.grid-5{
+    width: 40%;
+}
+.grid-4{
+    width: 30%;
+}
+.grid-3{
+    width: 25%;
+}
+.grid-2{
+    width: 20%;
+}

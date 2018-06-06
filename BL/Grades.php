@@ -1,5 +1,5 @@
 <?php
-require_once './DAL/GradesDAL.php';
+require_once '../DAL/GradesDAL.php';
 
 class Grades {
     private $id;
@@ -9,7 +9,14 @@ class Grades {
     private $grade04;
     
     function __construct(){}
-    
+   
+     function constructWithId($id) {
+        $grades = new self();
+        $grades->setId($id);
+        
+        return $grades;
+    }
+
     function constructWithParams($grade01, $grade02, $grade03, $grade04) {
         $grades = new self();
         $grades->grade01 = $grade01;

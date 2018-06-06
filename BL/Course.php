@@ -1,5 +1,5 @@
 <?php
-require_once './DAL/CourseDAL.php';
+require_once '../DAL/CourseDAL.php';
 
 class Course {
     private $id;
@@ -9,6 +9,13 @@ class Course {
     private $id_teacher;
     
     function __construct() {}
+    
+    static function constructWithId($id) {
+        $course = new Self();
+        $course->id = $id;
+        
+        return $course;
+    }
     
     static function constructWithParams($name, $credits, $id_programme, $id_teacher) {
         $course = new Self();
@@ -28,6 +35,12 @@ class Course {
     }
     function getById(){
         return CourseDAL::getById($this->id);
+    }
+    function getByStudent($student_id){
+        return CourseDAL::getByStudent($student_id);
+    }
+    function getByTeacher($teacher_id){
+        return CourseDAL::getByTeacher($teacher_id);
     }
     function update(){
         return CourseDAL::update($this);
