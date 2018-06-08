@@ -3,6 +3,7 @@
     
     if(isset($_POST['messageAction']) && ($_POST['messageAction'] == 'register' )){
         messageController::register();
+        $_POST = array();
     }
 ?>
 
@@ -20,7 +21,7 @@
                 <textarea name="content" rows="5"></textarea>
             </div>
             <input name="messageAction" type="hidden" value="register">
-            <button>ENVIAR</button>
+            <button type="submit">ENVIAR</button>
         </form>
     </div>
 </div>

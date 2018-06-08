@@ -8,7 +8,5 @@ A ideia principal é o desenvolvimento de uma plataforma acadêmica (semelhante 
 
 A base de dados para a plataforma pode ser gerada utilizando o ficheiro *academicportaldb.mwb*, presente no diretório *Database*.
 
-A página principal *index.php* contém uma rotina de testes manuais para todos os métodos de todas as classes, imprimindo os resultados na tela.
-
-Após rodar a *index.php* no navegador, é necessário executar o script *ResetDatabase.sql* utilizando o comando *source 'caminho_do_ficheiro_ResetDatabase.sql'* . 
+Para resetar o banco de dados é recomendado executar o script *ResetDatabase.sql* utilizado da seguinte forma em linha de comando: *source 'caminho_do_ficheiro_ResetDatabase.sql'* . 
 Isto é usado para evitar conflitos de chaves primárias já inseridas na base de dados.

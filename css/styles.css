@@ -193,6 +193,7 @@ main {
 
 /* Breadcrumbs */
 ul.breadcrumb {
+    margin-top: 0;
     padding: 0 1em;
     list-style: none;
 }
@@ -357,6 +358,10 @@ footer {
     #compact-sidenav {
         display: block;
     }
+    
+    #sidenav:target {
+        display: block;
+    }
 
     #news-section {
         display: none;
@@ -386,6 +391,10 @@ footer {
     .content{
         flex-direction: column;
         align-items: center;
+    }
+    
+    .content > div {
+        width: 90%;
     }
 
     .input-section {

@@ -1,5 +1,3 @@
-
-
 <div class="form-content">
     <form action="./index.php" method="post" class="grid-6 dark-boxshadow">
         <h3>Cadastrar Usuário</h3>

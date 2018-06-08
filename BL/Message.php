@@ -17,6 +17,12 @@ class Message {
         
         return $message;
     }
+    static function constructWithId($id) {
+        $message = new Self();
+        $message->id = $id;
+        
+        return $message;
+    }
 
     function create(){
         return MessageDAL::create($this);

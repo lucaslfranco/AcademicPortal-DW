@@ -10,9 +10,10 @@ function checksStudent () {
 }
 
 function callbackChecksStudent () {   
-    if(this.readyState == 4 && this.status == 200){
-        if(this.responseText != ""){
-            document.getElementById("user-name").value = this.responseText;        
+    if(this.readyState === 4 && this.status === 200){
+        if(this.responseText !== ""){
+            $msg = JSON.parse(this.responseText);
+            document.getElementById("user-name").value = $msg.name;        
             document.getElementById("user-name").style.backgroundColor = "rgb(235, 235, 228)";
             document.getElementById("enrollment-button").disabled = false;
         }
@@ -37,12 +38,14 @@ function alreadyEnrolled () {
 }
 
 function callbackAlreadyEnrolled () {   
-    if(this.readyState == 4 && this.status == 200){
-        if(this.responseText == "ok"){
+    if(this.readyState == 4 && this.status === 200){
+        if(this.responseText === "ok"){
             document.enrollmentForm.submit();
         }
         else {
-            alert("Usuário já cadastrado!");
+            swal("Aluno já matriculado", "O aluno já é matriculado na disciplina!", "error", {
+                 button: "OK"
+            });
             return false;
         }
     }

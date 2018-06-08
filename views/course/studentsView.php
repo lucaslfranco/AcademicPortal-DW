@@ -2,15 +2,24 @@
     $students = $user->getByCourse($_GET['course']);
 ?>
 
-<h2>Alunos Matriculados</h2>
+<ul class="breadcrumb">
+    <li><a href="./index.php">Home</a></li>
+    <li><a href="./index.php?page=course/view&course=<?= $_GET['course'] ?>"><?= $course->getName() ?></a></li>
+    <li>Alunos Matriculados</li>
+</ul>
+<div class="view-formatting">
+    <h2>Alunos Matriculados</h2>
 
-<table class="list-table">
-  <tr>
-    <th>Nome</th>
-    <th>Email</th>
-    <th></th>
-  </tr>
-    <?php
+    <?php 
+    if($students){
+        echo '
+            <table class="list-table">
+                <tr>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th></th>
+                </tr>
+        ';
         foreach ($students as $student){
             echo '
                 <tr>
@@ -25,9 +34,18 @@
             echo '</td>
                 </tr>'
             ;
+            }
+        echo '
+            </table>
+            ';
         }
+    else {
+        echo '
+            <h3 style="text-align: center;">Não há alunos matriculados nesta disciplina!</h3>
+        ';
+    }
     ?>
-</table>
+</div>
 <div class="button-options">
-    <?php echo '<a href="./index.php?page=course/view.php&course='.$_GET['course'].'" class="submit-button">VOLTAR</a>'; ?>
+    <?= '<a href="./index.php?page=course/view.php&course='.$_GET['course'].'" class="submit-button">VOLTAR</a>'; ?>
 </div>          

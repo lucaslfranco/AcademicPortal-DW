@@ -32,7 +32,7 @@
     font-size: 1.2em;
 }
 
-.table-icon a {
+.table-icon > a {
     color: #1a3095;
     cursor: pointer;    
 }

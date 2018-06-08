@@ -8,10 +8,13 @@
             if(isset($_GET['user-id'])){
                 $user = User::constructWithId($_GET['user-id'])->getById();
                 if($user && $user->getRole() == 'student'){
-                    echo $user->getName();
+                    $msg['name'] = $user->getName();
+                    
+                    echo json_encode($msg);
                 }
             }
             break;
+        
         // Checks if the student is already enrolled in the course
         case 'alreadyEnrolled':
             if(isset($_GET['user-id'], $_GET['course-id'])){

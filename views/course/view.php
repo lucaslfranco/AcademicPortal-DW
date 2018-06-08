@@ -6,12 +6,13 @@
     $programme = Programme::constructWithId($course->getId_programme())->getById();
     if($role == 'student'){
         $teacher = User::constructWithId($course->getId_teacher())->getById();
+        $enrollment = Enrollment::constructWithIds($course->getId(), $user->getId())->getByIds();
+        $grades = Grades::constructWithId($enrollment->getId_grades())->getById();
     }
-    ?>
+?>
 
 <ul class="breadcrumb">
     <li><a href="./index.php">Home</a></li>
-    <li><a href="#">Disciplina</a></li>
     <?php echo '<li>'.$course->getName().'</li>'; ?>
 </ul>
 <div class="view-formatting">
@@ -36,7 +37,7 @@
         <?php
         if($role == 'student')
             echo '
-                <div class="view-section grid-5">
+                <div class="view-section grid-5" style="margin-bottom: 0;">
                     <h3>Professor</h3>
                     <p>'.$teacher->getName().'</p>
                 </div>';    
@@ -49,6 +50,28 @@
                 <a href="#openModal" class="submit-button">ENVIAR MENSAGEM</a> '; 
                 require_once './message/messageModal.php';
         echo '</div> ';
+    }
+    else {
+        echo '
+            <div class="grid-8" style="margin: auto;">
+            <table class="list-table" style="margin: 0;">
+                <tr>
+                    <th>Nota 1</th>
+                    <th>Nota 2</th>
+                    <th>Nota 3</th>
+                    <th>Nota 4</th>
+                    <th>Faltas</th>
+                </tr>
+                <tr>
+                    <td>'.$grades->getGrade01().'</td>
+                    <td>'.$grades->getGrade02().'</td>
+                    <td>'.$grades->getGrade03().'</td>
+                    <td>'.$grades->getGrade04().'</td>
+                    <td>'.$enrollment->getAbsences().'</td>
+                </tr>
+            </table>
+            </div>
+        ';
     }
     ?>
 </div>
